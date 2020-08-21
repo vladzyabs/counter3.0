@@ -1,29 +1,33 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import './App.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppRootStateType} from './store/store'
 import {increaseCounterAC, resetCounterAC} from './store/counter/counterActions'
+import Counter from './components/Counter/Counter'
+import {CounterType} from './store/counter/counterType'
 
 function App() {
 
-   const value = useSelector<AppRootStateType, number>(state => state.counter.currentValue)
+   const counter = useSelector<AppRootStateType, CounterType>(state => state.counter)
    const dispatch = useDispatch()
 
-   const incCounter = () => {
-      dispatch(increaseCounterAC())
-   }
+   const incCounter = useCallback(
+      () => {
+         dispatch(increaseCounterAC())
+      },
+      [dispatch],
+   )
 
-   const resetCounter = () => {
-      dispatch(resetCounterAC())
-   }
+   const resetCounter = useCallback(
+      () => {
+         dispatch(resetCounterAC())
+      },
+      [dispatch],
+   )
 
    return (
       <div className="App">
-         <div>
-            {value}
-         </div>
-         <button onClick={incCounter}>inc</button>
-         <button onClick={resetCounter}>reset</button>
+         <Counter value={counter.currentValue} maxValue={counter.endValue} increase={incCounter} reset={resetCounter}/>
       </div>
    )
 }

@@ -12,10 +12,13 @@ type InitialStateType = typeof initialState
 export const counterReducer = (state = initialState, action: ActionType): InitialStateType => {
    switch (action.type) {
       case 'INCREASE_COUNTER':
-         return {
-            ...state,
-            currentValue: state.currentValue + 1
+         if (state.currentValue < state.endValue) {
+            return {
+               ...state,
+               currentValue: state.currentValue + 1
+            }
          }
+         return state
       case 'RESET_COUNTER':
          return {
             ...state,
