@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useCallback} from 'react'
-import classes from './Number.module.scss';
+import classes from './Number.module.scss'
 
 type NumberPropsType = {
    idForHTML: string

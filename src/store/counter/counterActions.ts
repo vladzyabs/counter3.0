@@ -2,7 +2,8 @@ import {
    CHANGE_MAX_VALUE,
    CHANGE_MIN_VALUE,
    INCREASE_COUNTER,
-   RESET_COUNTER} from './counterType'
+   RESET_COUNTER,
+} from './counterType'
 
 type IncreaseCounterActionType = { type: typeof INCREASE_COUNTER }
 export const increaseCounterAC = (): IncreaseCounterActionType => {

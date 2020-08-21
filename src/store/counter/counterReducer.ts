@@ -32,7 +32,7 @@ export const counterReducer = (state = initialState, action: ActionType): Initia
       case 'CHANGE_MIN_VALUE':
          return {
             ...state,
-            startValue: action.value
+            startValue: action.value,
          }
       default:
          return state

@@ -12,8 +12,8 @@ function Counter(props: CounterPropsType) {
 
    const styles = {
       endCount: {
-         color: props.value === props.maxValue ? '#ff4461' : ''
-      }
+         color: props.value === props.maxValue ? '#ff4461' : '',
+      },
    }
 
    return (
