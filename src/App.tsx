@@ -2,9 +2,10 @@ import React, {useCallback} from 'react'
 import './App.css'
 import {useDispatch, useSelector} from 'react-redux'
 import {AppRootStateType} from './store/store'
-import {increaseCounterAC, resetCounterAC} from './store/counter/counterActions'
+import {changeMaxValueAC, changeMinValueAC, increaseCounterAC, resetCounterAC} from './store/counter/counterActions'
 import Counter from './components/Counter/Counter'
 import {CounterType} from './store/counter/counterType'
+import CounterSettings from './components/CounterSettings/CounterSettings';
 
 function App() {
 
@@ -25,9 +26,33 @@ function App() {
       [dispatch],
    )
 
+   const changeMaxValue = useCallback(
+      (newValue: number) => {
+         dispatch(changeMaxValueAC(newValue))
+      },
+      [dispatch],
+   )
+
+   const changeMinValue = useCallback(
+      (newValue: number) => {
+         dispatch(changeMinValueAC(newValue))
+      },
+      [dispatch],
+   )
+
    return (
       <div className="App">
-         <Counter value={counter.currentValue} maxValue={counter.endValue} increase={incCounter} reset={resetCounter}/>
+
+         <CounterSettings minValue={counter.startValue}
+                          maxValue={counter.endValue}
+                          changeMaxValue={changeMaxValue}
+                          changeMinxValue={changeMinValue}/>
+
+         <Counter value={counter.currentValue}
+                  maxValue={counter.endValue}
+                  increase={incCounter}
+                  reset={resetCounter}/>
+
       </div>
    )
 }

@@ -15,14 +15,24 @@ export const counterReducer = (state = initialState, action: ActionType): Initia
          if (state.currentValue < state.endValue) {
             return {
                ...state,
-               currentValue: state.currentValue + 1
+               currentValue: state.currentValue + 1,
             }
          }
          return state
       case 'RESET_COUNTER':
          return {
             ...state,
-            currentValue: state.startValue
+            currentValue: state.startValue,
+         }
+      case 'CHANGE_MAX_VALUE':
+         return {
+            ...state,
+            endValue: action.value,
+         }
+      case 'CHANGE_MIN_VALUE':
+         return {
+            ...state,
+            startValue: action.value
          }
       default:
          return state

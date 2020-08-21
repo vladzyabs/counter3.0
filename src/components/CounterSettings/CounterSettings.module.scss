@@ -1,0 +1,27 @@
+.counterSettingWrapper {
+   margin-right: 15px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 15px;
+   border: 1px solid #00cacd;
+   border-radius: 15px;
+
+   .settings {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #00cacd;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+
+      label:first-child {
+         margin-bottom: 8px;
+      }
+   }
+
+   input {
+      max-width: 100px;
+      margin: 0 0 0 auto;
+   }
+}

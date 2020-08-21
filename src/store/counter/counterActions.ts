@@ -1,4 +1,8 @@
-import {INCREASE_COUNTER, RESET_COUNTER} from './counterType'
+import {
+   CHANGE_MAX_VALUE,
+   CHANGE_MIN_VALUE,
+   INCREASE_COUNTER,
+   RESET_COUNTER} from './counterType'
 
 type IncreaseCounterActionType = { type: typeof INCREASE_COUNTER }
 export const increaseCounterAC = (): IncreaseCounterActionType => {
@@ -14,6 +18,24 @@ export const resetCounterAC = (): ResetCounterActionType => {
    }
 }
 
+type ChangeMaxValueActionType = { type: typeof CHANGE_MAX_VALUE, value: number }
+export const changeMaxValueAC = (newValue: number): ChangeMaxValueActionType => {
+   return {
+      type: CHANGE_MAX_VALUE,
+      value: newValue,
+   }
+}
+
+type ChangeMinValueActionType = { type: typeof CHANGE_MIN_VALUE, value: number }
+export const changeMinValueAC = (newValue: number): ChangeMinValueActionType => {
+   return {
+      type: CHANGE_MIN_VALUE,
+      value: newValue,
+   }
+}
+
 export type ActionType =
    IncreaseCounterActionType
    | ResetCounterActionType
+   | ChangeMaxValueActionType
+   | ChangeMinValueActionType

@@ -1,5 +1,5 @@
 import {counterReducer} from './counterReducer'
-import {increaseCounterAC, resetCounterAC} from './counterActions'
+import {changeMaxValueAC, changeMinValueAC, increaseCounterAC, resetCounterAC} from './counterActions'
 import {CounterType} from './counterType'
 
 let startState: CounterType
@@ -29,5 +29,25 @@ test('counter should be reset', () => {
 
    expect(endState.currentValue).toBe(startState.startValue)
    expect(endState.startValue).toBe(startState.startValue)
+   expect(endState.endValue).toBe(startState.endValue)
+})
+
+test('maximum value should change', () => {
+   let endState
+
+   endState = counterReducer(startState, changeMaxValueAC(10))
+
+   expect(endState.currentValue).toBe(startState.currentValue)
+   expect(endState.startValue).toBe(startState.startValue)
+   expect(endState.endValue).toBe(10)
+})
+
+test('minimum value should change', () => {
+   let endState
+
+   endState = counterReducer(startState, changeMinValueAC(2))
+
+   expect(endState.currentValue).toBe(startState.currentValue)
+   expect(endState.startValue).toBe(2)
    expect(endState.endValue).toBe(startState.endValue)
 })

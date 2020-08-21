@@ -1,0 +1,20 @@
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    margin-right: 10px;
+    color: #00cacd;
+  }
+
+  input {
+    padding: 3px 5px;
+    text-align: center;
+    background: #00cacd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 10px 0px rgba(27, 27, 39, 0.6);
+  }
+}
