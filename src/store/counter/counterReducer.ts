@@ -5,6 +5,7 @@ const initialState: CounterType = {
    currentValue: 0,
    startValue: 0,
    endValue: 5,
+   blockingCounter: false,
 }
 
 type InitialStateType = typeof initialState
@@ -28,11 +29,19 @@ export const counterReducer = (state = initialState, action: ActionType): Initia
          return {
             ...state,
             endValue: action.value,
+            blockingCounter: true,
          }
       case 'CHANGE_MIN_VALUE':
          return {
             ...state,
             startValue: action.value,
+            blockingCounter: true,
+         }
+      case 'SET_SETTINGS':
+         return {
+            ...state,
+            currentValue: state.startValue,
+            blockingCounter: false,
          }
       default:
          return state
