@@ -3,8 +3,7 @@ import classes from './Button.module.scss'
 
 type ButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
    & {}
-
-
+   
 function Button(props: ButtonPropsType) {
    return (
       <button className={classes.btn} {...props}>{props.children}</button>
