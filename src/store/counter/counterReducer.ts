@@ -6,6 +6,10 @@ const initialState: CounterType = {
    startValue: 0,
    endValue: 5,
    blockingCounter: false,
+   message: {
+      title: '',
+      error: false,
+   },
 }
 
 type InitialStateType = typeof initialState
@@ -30,18 +34,37 @@ export const counterReducer = (state = initialState, action: ActionType): Initia
             ...state,
             endValue: action.value,
             blockingCounter: true,
+            message: {
+               ...state.message,
+               title: action.value <= state.startValue
+                  ? 'Incorrect value!'
+                  : 'Enter values and press "set"',
+               error: action.value <= state.startValue,
+            },
          }
       case 'CHANGE_MIN_VALUE':
          return {
             ...state,
             startValue: action.value,
             blockingCounter: true,
+            message: {
+               ...state.message,
+               title: (action.value < 0 || action.value >= state.endValue)
+                  ? 'Incorrect value!'
+                  : 'Enter values and press "set"',
+               error: (action.value < 0 || action.value >= state.endValue),
+            },
          }
       case 'SET_SETTINGS':
          return {
             ...state,
             currentValue: state.startValue,
             blockingCounter: false,
+            message: {
+               ...state.message,
+               title: '',
+               error: false,
+            },
          }
       default:
          return state

@@ -58,16 +58,19 @@ function App() {
 
          <CounterSettings minValue={counter.startValue}
                           maxValue={counter.endValue}
+                          error={counter.message.error}
+                          blocking={!counter.blockingCounter}
                           changeMaxValue={changeMaxValue}
                           changeMinxValue={changeMinValue}
-                          setSettings={setSettings}
-                          blocking={!counter.blockingCounter}/>
+                          setSettings={setSettings}/>
 
          <Counter value={counter.currentValue}
                   maxValue={counter.endValue}
+                  message={counter.message.title}
+                  error={counter.message.error}
+                  blocking={counter.blockingCounter}
                   increase={incCounter}
-                  reset={resetCounter}
-                  blocking={counter.blockingCounter}/>
+                  reset={resetCounter}/>
 
       </div>
    )

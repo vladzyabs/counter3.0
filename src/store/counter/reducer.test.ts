@@ -9,6 +9,10 @@ beforeEach(() => {
       startValue: 0,
       endValue: 6,
       blockingCounter: false,
+      message: {
+         title: '',
+         error: false
+      }
    }
 })
 

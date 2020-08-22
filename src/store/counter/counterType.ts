@@ -9,4 +9,8 @@ export type CounterType = {
    startValue: number
    endValue: number
    blockingCounter: boolean
+   message: {
+      title: string
+      error: boolean
+   }
 }
